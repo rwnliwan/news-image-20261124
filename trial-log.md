@@ -55,7 +55,20 @@
 
 | version | file | bytes | dims | sha256 (run 1) | sha256 (run 2) | identical | notes |
 |---|---|---|---|---|---|---|---|
-| v1 | entry.png (JPEG q90, from 1600x1600 media gen in this session) | 369787 | 1024x1024 | _pending preflight_ | _pending preflight_ | _pending_ | Visual check: all 6 headlines spelled correctly, masthead date correct. First generation drew Egypt's flag instead of Morocco's in the lead photo; fixed with a targeted edit in this session (Morocco flag now correct, red with green pentagram). Gaza panel split into a main photo plus a small Oxfam report inset, harmless extra detail. |
+| v1 | entry.png (JPEG q90, from 1600x1600 media gen in this session) | 369787 | 1024x1024 | 928f3ae1d2352cdd485c7f98bb6c038a489be2ec706d3ba3924e4188e9afae67 | 928f3ae1d2352cdd485c7f98bb6c038a489be2ec706d3ba3924e4188e9afae67 | yes | Visual check: all 6 headlines spelled correctly, masthead date correct. First generation drew Egypt's flag instead of Morocco's in the lead photo; fixed with a targeted edit in this session (Morocco flag now correct, red with green pentagram). Gaza panel split into a main photo plus a small Oxfam report inset, harmless extra detail. Preflight run twice via MAKEFUN_OUTPUT_DIR (Node v24.22.1), byte-identical output. |
+
+## Repo (local, fresh history in this session)
+
+- Local HEAD: 23aab76668ab48568079e67558885ee36e819298 ("news-image-20261124: front page summing up Tuesday 24 November 2026"), branch main, 6 files.
+- Remote: BLOCKED at handoff. `gh repo delete` failed HTTP 403: the gh token has scopes
+  gist, read:org, repo only, no `delete_repo` scope. The pre-opening repo
+  (created 2026-11-23T22:53:27Z) still exists on GitHub and cannot be deleted from this
+  session without an interactive `gh auth refresh -h github.com -s delete_repo` approval.
+  A retry-loop script is left at ~/workspace/make-fun/news-image-20261124-retry.sh: once the
+  old repo is deleted, it creates the fresh repo, pushes HEAD, sets About (homepage +
+  topics makefun, ai-agents, bounties), and verifies with `gh repo view` + `git ls-remote`.
+  The script was written but NOT started, pending that delete-scope approval.
+  `git ls-remote origin HEAD` match is therefore still to be verified after the push.
 
 ## Submission
 
